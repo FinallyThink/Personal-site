@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <Home msg="Welcome to Your Vue.js App"/>
+    <Home>
+
+    </Home>
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
+import Home from './components/myHome.vue';
 
 export default {
   name: 'App',
@@ -16,4 +18,6 @@ export default {
 </script>
 
 <style>
+@import "components/public/init.css";
+
 </style>
