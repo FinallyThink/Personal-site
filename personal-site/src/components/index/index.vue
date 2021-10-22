@@ -25,30 +25,32 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+@import "~@/components/public/common.less";
 .container{
-  width: 100vw;
-  height: 100vh;
+  
+  width: @max-width;
+  height: @max-height;
   header{
-    width:100vw;
+    width: @max-width;
     height: 5vh;
     position: relative;
     line-height: 5vh;
     top: 0;
     left: 0;
-    background: #7eb3e9;
+    border-bottom: 1px solid #eee;
+
   }
   main{
-    width:100vw;
+    width: @max-width;
     height: 90vh;
     position: relative;
   }
   footer{
-    width:100vw;
+    width: @max-width;
     height: 5vh;
     position: relative;
     line-height: 5vh;
-    background: #7eb3e9;
+
   }
 }
 
