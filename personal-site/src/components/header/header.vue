@@ -4,7 +4,7 @@
      <li>文章</li>
      <li>收藏</li>
      <li>工具</li>
-     <li>简历</li>
+     <li>branch</li>
 </div>
 </template>
 
