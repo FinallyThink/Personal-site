@@ -18,6 +18,6 @@ export default {
 </script>
 
 <style>
-@import "components/public/init.css";
+@import "components/public/style/init.css";
 
 </style>

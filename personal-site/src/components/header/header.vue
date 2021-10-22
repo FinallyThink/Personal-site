@@ -1,13 +1,14 @@
 <template>
-<div class="content">
-    <div class="menu">
+
+<header>
+    <div :class="inTop">
    <a  v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}" >{{item.name}}</li></a>
     </div>
     <div class="option">
     <li>登录</li>
     <li>友链</li>
     </div>
-</div>
+</header>
 </template>
 
 <script>
@@ -46,16 +47,43 @@ export default {
                     selected: false
                 },
             ],
-            abc : "123",
+            inTop:"inTop"
+        }
+    },
+     mounted () {
+        window.addEventListener('scroll', this.scrollTop);     
+    },
+    methods:{
+        scrollTop(){
+           let distance = document.documentElement.scrollTop;
+           if(distance < 60){
+               this.inTop = "inTop"
+           }else{
+               this.inTop  = "";
+           }
         }
     }
-
 }
 </script>
 
 <style scoped lang="less">
-@import "~@/components/public/common.less";
-.content{
+@import "~@/components/public/style/common.less";
+.inTop{
+    background:transparent;
+}
+
+header{  
+    background:@header-color;
+    position: fixed;
+    width: @max-width;
+    height: 5vh;
+    line-height: 5vh;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #eee;
+    z-index: 9999;
+    transition: all 2s;
+  
 .menu{
     padding-left:@left-distance;
     display: inline-block;
@@ -69,7 +97,7 @@ export default {
     li{
       position: relative;
       width: 65px;
-    
+      color: @font-color_f;
       display: inline-block;
       user-select: none;
       text-align: center;
