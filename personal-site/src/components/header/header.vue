@@ -1,7 +1,7 @@
 <template>
 
-<header>
-    <div :class="inTop">
+<header :class="inTop">
+    <div class="menu">
    <a  v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}" >{{item.name}}</li></a>
     </div>
     <div class="option">
@@ -70,12 +70,14 @@ export default {
 @import "~@/components/public/style/common.less";
 .inTop{
     background:transparent;
+    border: none;
 }
 
 header{  
     background:@header-color;
     position: fixed;
-    width: @max-width;
+    width: @min-width;
+    min-width: 980px;
     height: 5vh;
     line-height: 5vh;
     top: 0;
@@ -85,7 +87,8 @@ header{
     transition: all 2s;
   
 .menu{
-    padding-left:@left-distance;
+    position: absolute;
+    left:@left-distance;
     display: inline-block;
 }
 
@@ -101,7 +104,7 @@ header{
       display: inline-block;
       user-select: none;
       text-align: center;
-      text-shadow:4px 4px 2px #999;
+      text-shadow:@text-shadow;
        &.selected{
        border-bottom: 2px orange solid;
       }

@@ -1,26 +1,29 @@
 <template>
  <div class="container">
-
+     <Background/>
      <slot name="header">
-       这里是头部
+
      </slot>
 
    <main>
     <slot name="main">
-      这里是主体
+
     </slot>
   </main>
   <footer>
     <slot name="footer">
-      这里是尾部
+
     </slot>
   </footer>
  </div>
 </template>
 
 <script>
+import Background from "../public/components/image/background.vue"
 export default {
-
+ components: {
+      Background
+  }
 }
 </script>
 
@@ -31,7 +34,7 @@ export default {
   height: @max-height;
   main{
     width: @max-width;
-    height: 900vh;
+  
     position: relative;
   }
   footer{
