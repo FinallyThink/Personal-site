@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import image from "@/assets/image/1.mp4";
 export default {
 data(){
+
   return{  
-      image: image
+      image: this.$state.background
 }}
 }
 </script>

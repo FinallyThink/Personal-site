@@ -5,8 +5,7 @@
    <a  v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}" >{{item.name}}</li></a>
     </div>
     <div class="option">
-    <li>登录</li>
-    <li>友链</li>
+    <li v-for="(item,i) in option" :key="i">{{item.name}}</li>
     </div>
 </header>
 </template>
@@ -15,39 +14,9 @@
 export default {
     data(){
         return {
-            menu:[
-                 {
-                    id: 1,
-                    name : "主站",
-                    href : "#",
-                    selected: true
-                },
-                {
-                    id: 2,
-                    name : "文章",
-                    href : "#",
-                    selected: false
-                },
-                {
-                    id: 3,
-                    name : "收藏",
-                     href : "#",
-                    selected: false
-                },
-                {
-                    id: 4,
-                    name : "工具",
-                    href : "#",
-                    selected: false
-                },
-                {
-                    id: 5,
-                    name : "简历",
-                    href : "#",
-                    selected: false
-                },
-            ],
-            inTop:"inTop"
+            menu:this.$state.menu,
+            inTop:"inTop",
+            option:this.$state.headerOption 
         }
     },
      mounted () {
@@ -76,8 +45,8 @@ export default {
 header{  
     background:@header-color;
     position: fixed;
-    width: @min-width;
-    min-width: 980px;
+    width: @max-width;
+    min-width: @min-width;
     height: 5vh;
     line-height: 5vh;
     top: 0;
