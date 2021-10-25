@@ -57,6 +57,7 @@ data(){
       align-items: center;
       padding: 3%;
       border-bottom: 1px solid @gray;
+      user-select: none;
     }
   }
   #navigation ,#subsidiary{

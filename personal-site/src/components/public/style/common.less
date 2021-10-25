@@ -4,10 +4,12 @@
 @left-distance:5vw;
 @container-width:90vw;
 
+@auther-size:200px;
+
 @font-color_f:#fff;
 @header-color:rgb(136, 210, 245);
 @gray:#999;
-
+@c333:#333;
 
 @theme-color:@header-color;
 @text-shadow: 4px 4px 2px @gray;
@@ -15,4 +17,34 @@
 .container-b {
     background-color :fade(@theme-color,80%);
     box-shadow: @box-shadow;
+}
+
+//absolute 垂直居中
+
+.box-center-y(@position :absolute){
+    position: @position;
+    top:50%;
+    transform: translate(0,-50%);
+}
+
+//右半圆
+
+.right-semicircle{
+    border-radius: 0 100vw 100vw 0;
+}
+
+//左半圆
+
+.left-semicircle{
+    border-radius: 100vw 0 0  100vw;
+}
+
+//下凹
+.box-shadow-down{
+    box-shadow: 1px 1px 1px inset @c333;
+}
+
+//突起
+.box-shadow-up{
+    box-shadow: -1px -1px 1px inset @c333;
 }
