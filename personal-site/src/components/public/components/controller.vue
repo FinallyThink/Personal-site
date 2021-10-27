@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import SlideButton from "../button/slide.vue";
+import SlideButton from "./button/slide.vue";
 export default {
 components:{
  SlideButton
@@ -21,7 +21,11 @@ data(){
   return{
       buttonSet:{
           size:15,
-          unit:"px"
+          unit:"px",
+          on_off:{
+             on:"开",
+             off:"关"
+          }
       },
       BackgroundSpecial:false,
   }

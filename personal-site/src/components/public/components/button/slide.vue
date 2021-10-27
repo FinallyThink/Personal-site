@@ -13,7 +13,7 @@
   borderRadius:(Height),
   lineHeight:(Height),
   float:(open?'left':'right')}"
-  >{{open?'on':'off'}}</div>
+  >{{open?on_off.on:on_off.off}}</div>
   </div>
 </template>
 
@@ -23,7 +23,8 @@ data(){
     return{
         size: this.seting.size,
         unit:this.seting.unit,
-        open:this.isOpen
+        open:this.isOpen,
+        on_off: this.seting.on_off?this.seting.on_off:{on:"on",off:"off"}
     }
 },
 props:{
