@@ -1,6 +1,6 @@
 <template>
  <div class="container">
-     <Background/>
+     <Background></Background>
      <Controller/>
      <slot name="header">
 

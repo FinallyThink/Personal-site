@@ -44,28 +44,22 @@ export default {
 
 header{  
     background:@header-color;
-    position: fixed;
-    width: @max-width;
+    position: relative;
     min-width: @min-width;
     height: 5vh;
     line-height: 5vh;
-    top: 0;
-    left: 0;
     border-bottom: 1px solid #eee;
     z-index: 9999;
     transition: all 2s;
-  
-.menu{
-    position: absolute;
-    left:@left-distance;
-    display: inline-block;
-}
+    display: flex;
+    justify-content: space-between;
+    .menu{
+         margin-left: @left-distance;
+    }
+    .option{
+        margin-right: @left-distance;
+    }
 
-.option{
-    display: inline-block;
-    position: absolute;
-    right: @left-distance;
-}
     li{
       position: relative;
       width: 65px;

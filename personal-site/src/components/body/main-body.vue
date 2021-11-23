@@ -34,6 +34,7 @@ data(){
 @import "~@/components/public/style/common.less";
 
 #main{
+  z-index: 888;
   position: relative;
   top : 15vh;
   width: @max-width * 0.9;
@@ -42,7 +43,7 @@ data(){
   #navigation{
     li{
       img{
-        height: 50%;
+        height: 1.4rem;
         width: auto;
       }
       &:hover{

@@ -12,7 +12,7 @@
   height:(Height),
   borderRadius:(Height),
   lineHeight:(Height),
-  float:(open?'left':'right')}"
+  left:(open?'0px':slideOffset)}"
   >{{open?on_off.on:on_off.off}}</div>
   </div>
 </template>
@@ -45,8 +45,10 @@ computed:{
         
     },
     halfWidth(){
-       
        return this.size * 1.5 + this.unit;
+    },
+    slideOffset(){
+         return this.size  + this.unit;
     }
 },
 }
@@ -55,15 +57,17 @@ computed:{
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
 #slide-button{
+    display: inline-block;
     background: @gray;
-    transition: all ,1.5s;
     .box-shadow-down;
     .slide{
+        display: block;
+        position: relative;
         background: orange;
         .box-shadow-up;
         text-align: center;
         user-select: none;
-
+        transition: all ,.5s;
     }
 }
 

@@ -2,9 +2,10 @@
   <div id="auther">
       <div class="show">令<br>灵</div> 
       <div class="hidden">
-          <li><SlideButton 
+        
+          <li>背景特效<br><SlideButton 
           :seting='buttonSet' 
-          :isOpen="BackgroundSpecial" 
+          :isOpen="$store.state.BGEffect" 
           v-on:beClick = "buttonClick" /></li>
           <li>码龄：2</li> 
       </div>
@@ -27,12 +28,11 @@ data(){
              off:"关"
           }
       },
-      BackgroundSpecial:false,
   }
 },
 methods:{
 buttonClick:function(data,callback){
-   this.BackgroundSpecial = data;
+   data?this.$store.commit('BGEffectON') :this.$store.commit('BGEffectOff');
    callback(data);
 }
 
@@ -45,8 +45,8 @@ buttonClick:function(data,callback){
 @import "~@/components/public/style/common.less";
 
 #auther{
-
-    font-size:21px;
+    user-select: none;
+    font-size:1.8rem;
     font-weight: 800;
     width:@auther-size;
     height: @auther-size;
@@ -57,15 +57,16 @@ buttonClick:function(data,callback){
     top: calc(50% - @auther-size / 2);
     left:  -@auther-size / 2;
     transform-origin: center;
-     transform: rotate(0.5turn);
-    // &:hover{
-      
-    // }
+    transform: rotate(0turn);
+    z-index: 1;
+     &:hover{
+       transform: rotate(0.5turn);
+       z-index: 999;
+     }
     .hidden, .show{
          position: absolute;
-         display: inline-block;
          width:50%;
-             box-shadow: @box-shadow;
+         box-shadow: @box-shadow;
     }
     .show{
         left: 50%;
@@ -79,7 +80,7 @@ buttonClick:function(data,callback){
     }
      .hidden{
       height: 100%;
-      font-size:14px;
+      font-size:1rem;
       background: yellow;
       .right-semicircle;
       text-align: center;

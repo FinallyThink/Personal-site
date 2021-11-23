@@ -1,26 +1,21 @@
 <template>
   <div id="app">
-    <!-- <Home>
+    <Home>
 
-    </Home> -->
-    <message :message="message"/>
+    </Home>
+    <!-- <message :message="message"/> -->
   </div>
 </template>
 
 <script>
-/* import Home from './components/myHome.vue'; */
-import message from './components/public/components/message/showMessage.vue'
+import Home from './components/myHome.vue'; 
+// import message from './components/public/components/message/showMessage.vue'
 
 export default {
   name: 'App',
   components: {
-    message
+    Home
   },
-  data(){
-    return{
-      message:"这是一个测试"
-    }
-  }
 }
 </script>
 

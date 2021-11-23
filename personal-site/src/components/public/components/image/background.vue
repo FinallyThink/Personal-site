@@ -1,6 +1,6 @@
 <template>
 <div class="background">
-  <video :src="image" autoplay="autoplay" loop="loop" muted="muted"></video>
+  <video v-show="$store.state.BGEffect" :src="image" autoplay="autoplay" loop="loop" muted="muted"></video>
 </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
 data(){
 
   return{  
-      image: this.$state.background
+      image: this.$state.background,
 }}
 }
 </script>
@@ -21,6 +21,7 @@ data(){
     height: 100vh;
     overflow: hidden;
     position: fixed;
+    background-color: @background-color;
     z-index: 0;
 }
 video{
