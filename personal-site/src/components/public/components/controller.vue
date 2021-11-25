@@ -51,7 +51,7 @@ buttonClick:function(data,callback){
     width:@auther-size;
     height: @auther-size;
     font-family:"楷体";
-    transition: all 1.5s;
+    transition: all .75s;
     z-index: 999;
     position: fixed;
     top: calc(50% - @auther-size / 2);

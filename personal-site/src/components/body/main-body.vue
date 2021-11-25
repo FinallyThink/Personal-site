@@ -1,9 +1,8 @@
 <template>
     <div id="main">
      <div id="navigation">
-
      <a v-for="(item,i)  in menu" :key="i">
-       <li>
+       <li @click="beClick(i)">
          <img  :src="item.selected?header_svg_pink:header_svg" alt="">
          {{item.name}}
        </li>
@@ -26,7 +25,18 @@ data(){
     header_svg :this.$state.header_svg.default,
     header_svg_pink:this.$state.header_svg.pink
   }
+},
+methods:{
+  beClick(key){
+      this.menu.forEach((ele , i )=> {
+        ele.selected = false;
+        if(i === key){
+          ele.selected = true;
+        }      
+    });
+  }
 }
+
 }
 </script>
 
