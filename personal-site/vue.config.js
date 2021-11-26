@@ -8,6 +8,11 @@ module.exports = {
             })
     },
     devServer: {
+        proxy:{
+          'api/':{
+              target: 'http://localhost:3000/',
+               changeOrigin: false,     // target是域名的话，需要这个参数，}
+        }},
         open: true,
         host: 'localhost',
         port: 8080,
