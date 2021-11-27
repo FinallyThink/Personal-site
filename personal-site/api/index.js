@@ -1,8 +1,18 @@
 import axios from "axios"
 
-async function getIndex(){
-    const resp = await axios.post("http://localhost:8080/api/");
-    console.log(resp);
+class Axios {
+    constructor(url){
+        this.url = url;
+    }
+
+    async  post(data,callback){
+         const resp = await axios.post(this.url,data);
+         callback(resp);
+    }
+    async get(data,callback){
+        const resp = await axios.get(this.url,data);
+        callback(resp);
+   }
 }
 
-getIndex();
+export default Axios;

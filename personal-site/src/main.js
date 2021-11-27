@@ -5,7 +5,11 @@ import store from './store/index.js'
 
 import api from '../api/index.js'
 
-console.log(api);
+const re = new api("http://localhost:8080/api/")
+
+re.post({a:1},(data)=>{
+   console.log(data);
+})
 
 Vue.use(config);
 
