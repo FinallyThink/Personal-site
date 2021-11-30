@@ -18,13 +18,24 @@
 </template>
 
 <script>
+  import axios from "@/api/index.js";
+
 export default {
 data(){
   return {
-    menu:this.$state.details[0].content,
+    menu:[],
     header_svg :this.$state.header_svg.default,
     header_svg_pink:this.$state.header_svg.pink
   }
+},
+async created(){
+  const rq = new axios(this.$state.api);
+  const result = await rq.post({})
+  result.data.map((ele,i)=>{
+    ele.selected = i=== 0 ? true:false;
+  });
+  this.menu= result.data;
+
 },
 methods:{
   beClick(key){
