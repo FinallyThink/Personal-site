@@ -31,11 +31,11 @@ data(){
 async created(){
   const rq = new axios(this.$state.api);
   const result = await rq.post({})
-  result.data.map((ele,i)=>{
-    ele.selected = i=== 0 ? true:false;
-  });
-  this.menu= result.data;
-
+  this.menu = result.data.map(function(ele , i){
+    ele.selected = i === 0 ? true : false;
+    return ele;
+  })
+  console.log(this.menu);
 },
 methods:{
   beClick(key){
