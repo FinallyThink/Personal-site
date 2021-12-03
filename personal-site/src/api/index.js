@@ -8,11 +8,7 @@ class Axios {
         const resp = await axios.post(this.url,data);
         const res ={
             status:resp.data.status,
-<<<<<<< HEAD
             data : resp.data.data?resp.data.data:resp.data.errMsg
-=======
-            data : resp.data.data
->>>>>>> 668953cfe8fe0880f9da58e6c1c465352f415587
         }
         return res;
     }
@@ -22,8 +18,4 @@ class Axios {
    }
 }
 
-<<<<<<< HEAD
 export default Axios;
-=======
-export default Axios;
->>>>>>> 668953cfe8fe0880f9da58e6c1c465352f415587
