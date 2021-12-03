@@ -3,7 +3,7 @@ My personal site
 
 
 # 项目目录简介
-
+```
 |—— public           #html 模板目录    
 |—— src              #开发目录    
    |——assets         #项目资源目录    
@@ -15,3 +15,4 @@ My personal site
    |——lib            #模拟数据目录  
       |——config.js   #全局数据注入  
 |——APP.vue           #入口文件    
+```
