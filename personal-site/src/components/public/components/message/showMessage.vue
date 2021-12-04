@@ -1,22 +1,26 @@
 <template>
   <div v-if="show" class="message"
-  :style="styleObject">
+  :style="{
+      background:this.bColor,
+      animationDuration:this.animationDuration,
+      width:this.width,
+      height:this.height,
+      borderRadius:this.size/2 + this.unit
+      }">
      {{showMessage}}
   </div>
 </template>
 
 <script>
+
+
 export default {
     data(){
         return{
             showMessage:this.message,
             show:true,
-            styleObject : {
-                width:this.width,
-                height:this.height,
-                animationDuration:this.duration +"ms" 
+            animationDuration:this.duration +"ms", 
 
-            }
         }
     },
     props:{
@@ -34,7 +38,11 @@ export default {
         },
         duration:{
             type:Number,
-            default:1500
+            default:2000
+        },
+        mType:{
+            type:String,
+            default:"message"
         }
     },
     computed:{
@@ -44,11 +52,24 @@ export default {
         height(){
             return this.size + this.unit
         },
+        bColor(){
+            switch(this.mType){
+                case "message":
+                    return "#6bc56b";
+                case "wram":
+                    return "red";
+                case "alert":
+                    return "yellow";
+                default:
+                    return "#6bc56b";    
+            }
+        }
     },
+    //自动销毁
     mounted:function(){
         setTimeout(()=>{
-            this.show = true
-        },this.duration+1000)
+            this.show = false
+        },this.duration)
     }
 
 }
@@ -61,14 +82,15 @@ export default {
     display: flex;
     top:50%;
     left: 50%;
+    font-size: 1.2rem;
 
     transform: translate(-50%,-50%);
     justify-content:center;
     align-items: center;
-    border-radius: 5%;
     animation-name: vanish;
     animation-timing-function:ease ;
     animation-delay: 1s; 
+    z-index: 9999;
 }
 @keyframes vanish{
    from{opacity: 1;

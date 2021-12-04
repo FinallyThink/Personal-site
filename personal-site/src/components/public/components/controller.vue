@@ -58,7 +58,7 @@ buttonClick:function(data,callback){
     left:  -@auther-size / 2;
     transform-origin: center;
     transform: rotate(0turn);
-    z-index: 1;
+    z-index: 9999;
      &:hover{
        transform: rotate(0.5turn);
        z-index: 999;

@@ -9,7 +9,7 @@
       </a>
      </div>
     <div id="principal">
-
+     <Subject />
     </div>
      <div id="subsidiary">
 
@@ -19,8 +19,13 @@
 
 <script>
   import axios from "@/api/index.js";
+  import Subject from './subject.vue';
 
+  
+23
 export default {
+  components: { Subject },
+
 data(){
   return {
     menu:[],
@@ -30,12 +35,15 @@ data(){
 },
 async created(){
   const rq = new axios(this.$state.api);
-  const result = await rq.post({})
+  const result = await rq.post({});
+  if(result.status === 0){
+      console.log(result);
+      return;
+  }
   this.menu = result.data.map(function(ele , i){
     ele.selected = i === 0 ? true : false;
     return ele;
   })
-  console.log(this.menu);
 },
 methods:{
   beClick(key){
