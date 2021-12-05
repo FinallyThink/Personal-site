@@ -38,7 +38,7 @@ export default {
         },
         duration:{
             type:Number,
-            default:2000
+            default:2500
         },
         mType:{
             type:String,
@@ -69,35 +69,45 @@ export default {
     mounted:function(){
         setTimeout(()=>{
             this.show = false
-        },this.duration)
+        },this.duration - 100)
     }
 
 }
 </script>
 
 <style scoped lang="less">
+@import "~@/components/public/style/common.less";
 
 .message{
-    position: absolute;
+    position: fixed;
     display: flex;
-    top:50%;
     left: 50%;
     font-size: 1.2rem;
+    box-shadow:@box-shadow ;
+    text-shadow: @text-shadow;
 
     transform: translate(-50%,-50%);
     justify-content:center;
     align-items: center;
     animation-name: vanish;
     animation-timing-function:ease ;
-    animation-delay: 1s; 
+
     z-index: 9999;
 }
 @keyframes vanish{
-   from{opacity: 1;
-       top:50%}
-    to{
-       opacity: 0;
-       top:40%;
+   0%{opacity: 1;
+       top:0%}
+   30%{
+       opacity: 1;
+       top:30%;
+    }
+    70%{
+       opacity: 1;
+       top:30%;
+    }
+    100%{
+      opacity: 0;
+       top:-10%
     }
 }
 </style>
