@@ -21,8 +21,6 @@
   import axios from "@/api/index.js";
   import Subject from './subject.vue';
 
-  
-23
 export default {
   components: { Subject },
 
@@ -54,6 +52,17 @@ methods:{
         }      
     });
   }
+},
+mounted(){
+  window.addEventListener('scroll',()=>{
+   let distance = document.documentElement.scrollTop;
+   let containers =[" #navigation","#subsidiary"];
+   containers.forEach(element => {
+      document.querySelector(element).style.top = distance +"px";
+     
+   });
+
+  })
 }
 
 }
@@ -80,7 +89,6 @@ methods:{
         background: fadein(@header-color,10%);
 
       }
-      position: relative;
       display: flex;
       height: 5vh;
       text-align: center;

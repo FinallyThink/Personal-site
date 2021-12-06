@@ -1,29 +1,44 @@
 <template>
-  <div id="ab">ACS
-    <button v-on:click="beClick">确定</button>
-    <div v-for="(item,i) in this.showMessage" :key="i">
-        <Message  :message="item.message"/>
-    </div>
-    
+  <div id="subject">
   </div>
 </template>
 
 <script>
+ import axios from "@/api/index.js";
 export default {
 
     data(){
         return {
-          showMessage:[]
+          showMessage:[],
+
         }
     },
     methods:{
-      beClick:function(){
-        const item = {message:"123qz"};
-        this.showMessage.push(item);
-      }
+    },
+    async mounted(){
+       const rq = new axios("http://localhost:8080/api/article/1");
+       const result = await rq.post({});
+       if(result.status === 1){
+         document.querySelector('#subject').innerHTML = result.data;
+       }else{
+         console.log(result.status);
+       }
+       return;
     }
+
 }
 </script>
-<style>
+<style lang="less">
+@import "~@/components/public/style/common.less";
+#subject{
+  padding: 0 3rem;
+  code{
+    padding: 1rem;
+    display: block;
+    background: @c333;
+    color:@font-color_f;
+    box-shadow: -2px -2px 10px inset #999
+  }
+}
 
 </style>

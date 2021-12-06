@@ -29,12 +29,14 @@ export default {
     },
     methods:{
         scrollTop(){
+           
            let distance = document.documentElement.scrollTop;
            if(distance < 60){
                this.inTop = "inTop"
            }else{
                this.inTop  = "";
            }
+          document.querySelector("header").style.top = distance + 'px';
         },
         changePage(key){
             console.log(key)
@@ -62,13 +64,14 @@ export default {
 
 header{  
     background:@header-color;
-    position: relative;
+    position: absolute;
     min-width: @min-width;
+    width: 100vw;
     height: 5vh;
     line-height: 5vh;
     border-bottom: 1px solid #eee;
     z-index: 9999;
-    transition: all 2s;
+    transition: background 2s;
     display: flex;
     justify-content: space-between;
     .menu{
