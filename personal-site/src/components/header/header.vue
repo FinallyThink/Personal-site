@@ -66,9 +66,9 @@ header{
     background:@header-color;
     position: absolute;
     min-width: @min-width;
-    width: 100vw;
-    height: 5vh;
-    line-height: 5vh;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
     border-bottom: 1px solid #eee;
     z-index: 9999;
     transition: background 2s;
@@ -77,7 +77,7 @@ header{
     .menu{
          @len : 6;
          @right:left;
-         margin-left: @left-distance;
+          margin-left: @left-distance;
          #writeSlide{
              width: 65px;
              height: 100%;

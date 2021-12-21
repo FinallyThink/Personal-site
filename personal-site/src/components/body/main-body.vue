@@ -9,10 +9,10 @@
       </a>
      </div>
     <div id="principal">
-     <Subject />
+     <Subject/>
     </div>
      <div id="subsidiary">
-
+       <Subsidiary/>
       </div>
     </div>
 </template>
@@ -20,15 +20,18 @@
 <script>
   import axios from "@/api/index.js";
   import Subject from './subject.vue';
+  import Subsidiary from './subsidiary.vue';
 
 export default {
-  components: { Subject },
+  components: { 
+  Subject,
+  Subsidiary },
 
 data(){
   return {
     menu:[],
     header_svg :this.$state.header_svg.default,
-    header_svg_pink:this.$state.header_svg.pink
+    header_svg_pink:this.$state.header_svg.pink,
   }
 },
 async created(){
@@ -46,9 +49,12 @@ async created(){
 methods:{
   beClick(key){
       this.menu.forEach((ele , i )=> {
+       
         ele.selected = false;
         if(i === key){
-          ele.selected = true;
+          let price = {Reading:ele.href}
+          this.$store.commit('ApiChange',price);
+          ele.selected = true;        
         }      
     });
   }
@@ -58,10 +64,8 @@ mounted(){
    let distance = document.documentElement.scrollTop;
    let containers =[" #navigation","#subsidiary"];
    containers.forEach(element => {
-      document.querySelector(element).style.top = distance +"px";
-     
+      document.querySelector(element).style.top = distance +"px";     
    });
-
   })
 }
 
@@ -101,7 +105,7 @@ mounted(){
   #navigation ,#subsidiary{
 
     width:15%;
-    min-height: 30vh;
+    max-height: 60vh;
     position: absolute;
     .container-b;
   }

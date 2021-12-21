@@ -49,3 +49,27 @@
 .box-shadow-up{
     box-shadow: -1px -1px 1px inset @c333;
 }
+
+//滚动条样式
+.scroll-style{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar{
+        width: 0.5rem;
+    }
+    &::-webkit-scrollbar-thumb{
+       background-color:  fade(@theme-color,100%);
+       border-radius: 0.5rem;
+    }
+}
+body{
+
+    &::-webkit-scrollbar{
+        width: 1rem;
+        opacity: 0;
+        }
+    &::-webkit-scrollbar-thumb{
+       background-color:  fade(@theme-color,80%);
+       border-radius: 0.5rem;
+    }
+}
