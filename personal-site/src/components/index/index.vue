@@ -1,7 +1,5 @@
 <template>
  <div class="container">
-     <Background></Background>
-     <Controller/>
      <slot name="header">
 
      </slot>
@@ -20,14 +18,8 @@
 </template>
 
 <script>
-import Background from "../public/components/image/background.vue";
-import Controller from "../public/components/controller.vue"
-export default {
- components: {
-      Background,
-      Controller
 
-  }
+export default {
 }
 </script>
 

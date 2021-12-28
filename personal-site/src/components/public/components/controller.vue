@@ -1,7 +1,7 @@
 <template>
   <div id="auther">
-      <div class="show">令<br>灵</div> 
-      <div class="hidden">
+      <div class="show-path">令<br>灵</div> 
+      <div class="hidden-path">
         
           <li>背景特效<br><SlideButton 
           :seting='buttonSet' 
@@ -63,12 +63,12 @@ buttonClick:function(data,callback){
        transform: rotate(0.5turn);
        z-index: 999;
      }
-    .hidden, .show{
+    .hidden-path, .show-path{
          position: absolute;
          width:50%;
          box-shadow: @box-shadow;
     }
-    .show{
+    .show-path{
         left: 50%;
         width:25%;
         height: 50%;
@@ -78,7 +78,7 @@ buttonClick:function(data,callback){
         line-height: 200%;
         .box-center-y;
     }
-     .hidden{
+     .hidden-path{
       height: 100%;
       font-size:1rem;
       background: yellow;

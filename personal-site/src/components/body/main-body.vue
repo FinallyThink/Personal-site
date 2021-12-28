@@ -60,13 +60,15 @@ methods:{
   }
 },
 mounted(){
+
+  let containers =[" #navigation","#subsidiary"];
   window.addEventListener('scroll',()=>{
-   let distance = document.documentElement.scrollTop;
-   let containers =[" #navigation","#subsidiary"];
-   containers.forEach(element => {
+    let distance = document.documentElement.scrollTop;
+      containers.forEach(element => {
       document.querySelector(element).style.top = distance +"px";     
    });
-  })
+  },
+  false);
 }
 
 }
@@ -103,7 +105,7 @@ mounted(){
     }
   }
   #navigation ,#subsidiary{
-
+    top : 0;
     width:15%;
     max-height: 60vh;
     position: absolute;

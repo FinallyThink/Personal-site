@@ -34,9 +34,30 @@ function ToScrollTop  (obj,callback){
     },step)
 }
 
+// 判断滚轮是否在滑动
+function IfscrollStop(callback){
+    var stopScroll = false;
+    var timer;
+    function ifStop(){
+       if(stopScroll){
+           callback();
+           stopScroll = false;
+       }
+    }
+    return function IfInscroll (){
+        stopScroll = true;
+        if(timer !== undefined){
+            clearInterval(timer)
+        }
+        timer = setTimeout(() => {
+               ifStop() 
+        }, 200);    
+    }
+}
+
 export  {
          getEletoTop,
          ToScrollTop,
-         
-        };
+         IfscrollStop    
+    };
 
