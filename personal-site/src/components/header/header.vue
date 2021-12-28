@@ -21,7 +21,8 @@ export default {
         return {
             menu:this.$state.menu,
             inTop:"inTop",
-            friends:this.$state.friends 
+            friends:this.$state.friends,
+            headerState:1
         }
     },
      mounted () {
@@ -29,14 +30,15 @@ export default {
     },
     methods:{
         scrollTop(){
-           
            let distance = document.documentElement.scrollTop;
-           if(distance < 60){
-               this.inTop = "inTop"
-           }else{
+           if(distance < 60 && this.headerState !== 1){
+               this.inTop = "inTop";
+               this.headerState = 1;
+           }else if(this.headerState !== 0){
                this.inTop  = "";
+               this.headerState = 0;
            }
-          document.querySelector("header").style.top = distance + 'px';
+           return;
         },
         changePage(key){
             console.log(key)
@@ -64,8 +66,7 @@ export default {
 
 header{  
     background:@header-color;
-    position: absolute;
-    min-width: @min-width;
+    position:fixed;
     width: 100%;
     height: 3rem;
     line-height: 3rem;

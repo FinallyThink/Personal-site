@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Home/>
+    <Article/>
     <Controller/>
     <Background/>
     <ToTop/>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
- import Home from './components/myHome.vue'; 
+ import Article from './components/Article.vue'; 
  import Controller from './components/public/components/controller.vue';
  import Background from './components/public/components/image/background.vue';
  import ToTop from './components/public/components/tool/toTop.vue';
@@ -17,7 +17,7 @@
 export default {
   name: 'App',
   components: {
-      Home,
+      Article,
       Controller,
       Background,
       ToTop

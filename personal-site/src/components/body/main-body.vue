@@ -32,6 +32,8 @@ data(){
     menu:[],
     header_svg :this.$state.header_svg.default,
     header_svg_pink:this.$state.header_svg.pink,
+    containers :["#navigation","#subsidiary"],
+    eleArr : []
   }
 },
 async created(){
@@ -57,16 +59,23 @@ methods:{
           ele.selected = true;        
         }      
     });
+  },
+  socrollMove(){
+   this.eleArr[0].style.left  = -document.documentElement.scrollLeft + document.documentElement.scrollWidth *0.05 +"px";
+   this.eleArr[1].style.right = document.documentElement.scrollLeft - document.documentElement.scrollWidth *0.95 + document.documentElement.clientWidth+"px";
   }
 },
 mounted(){
+  window.onresize = ()=>{
+    this.socrollMove();
+  }
 
-  let containers =[" #navigation","#subsidiary"];
+  this.containers.forEach((ele)=>{
+   this.eleArr.push(document.querySelector(ele));
+  })
+  this.socrollMove();
   window.addEventListener('scroll',()=>{
-    let distance = document.documentElement.scrollTop;
-      containers.forEach(element => {
-      document.querySelector(element).style.top = distance +"px";     
-   });
+      this.socrollMove();
   },
   false);
 }
@@ -81,7 +90,7 @@ mounted(){
   z-index: 888;
   position: relative;
   top : 15vh;
-  width: @max-width * 0.9;
+  width: 100%;
   min-height: 80vh;
   margin: 0 auto;
   #navigation{
@@ -105,10 +114,10 @@ mounted(){
     }
   }
   #navigation ,#subsidiary{
-    top : 0;
-    width:15%;
+    top : 15vh;
+    width:150px;
     max-height: 60vh;
-    position: absolute;
+    position: fixed;
     .container-b;
   }
   #principal{
@@ -117,9 +126,6 @@ mounted(){
     position: absolute;
     left:20%;
     .container-b;
-  }
-  #subsidiary{
-    right: 0;
   }
   
 }
