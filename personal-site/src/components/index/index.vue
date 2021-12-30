@@ -27,9 +27,9 @@ export default {
 @import "~@/components/public/style/common.less";
 .container{
   width: @max-width;
-  height: @max-height;
   main{
-    width: @max-width;
+    width:100%;
+    min-width: @max-width;
   
     position: relative;
   }

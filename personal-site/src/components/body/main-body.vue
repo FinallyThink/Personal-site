@@ -80,7 +80,7 @@ mounted(){
   false);
 }
 
-}
+ }
 </script>
 
 <style scoped lang="less">
@@ -90,7 +90,7 @@ mounted(){
   z-index: 888;
   position: relative;
   top : 15vh;
-  width: 100%;
+  width: 90%;
   min-height: 80vh;
   margin: 0 auto;
   #navigation{
@@ -117,7 +117,7 @@ mounted(){
     top : 15vh;
     width:150px;
     max-height: 60vh;
-    position: fixed;
+    position:fixed;
     .container-b;
   }
   #principal{

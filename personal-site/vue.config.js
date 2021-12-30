@@ -10,7 +10,8 @@ module.exports = {
     },
     devServer: {
         proxy:{
-          'article/':{
+        //   'article/':{
+            'post/':{
               target: 'http://localhost:3000/',
                changeOrigin: false,     // target是域名的话，需要这个参数，}
         }},

@@ -37,7 +37,7 @@ export default {
     height: 40px;
     background: @theme-color;
     bottom: 10vh;
-    right: @left-distance;
+    right: 5vw;
     z-index: 999;
     transition: all 0.5s;
     line-height: 40px;

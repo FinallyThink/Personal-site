@@ -22,7 +22,7 @@ export default {
             menu:this.$state.menu,
             inTop:"inTop",
             friends:this.$state.friends,
-            headerState:1
+
         }
     },
      mounted () {
@@ -31,12 +31,12 @@ export default {
     methods:{
         scrollTop(){
            let distance = document.documentElement.scrollTop;
-           if(distance < 60 && this.headerState !== 1){
+           if(distance < 60 ){
                this.inTop = "inTop";
-               this.headerState = 1;
-           }else if(this.headerState !== 0){
+
+           }else{
                this.inTop  = "";
-               this.headerState = 0;
+
            }
            return;
         },
@@ -52,6 +52,15 @@ export default {
 
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
+
+@media screen and(max-width:550px) {
+      .option,.menu{
+            display: none;
+        }
+   .inTop,header{  
+      background:@header-color;
+      }
+}
 .inTop{
     background:transparent;
     border: none;
@@ -93,6 +102,7 @@ header{
      
          .forDo(0,left);
     }
+
     .option{
         margin-right: @left-distance;
         li{
