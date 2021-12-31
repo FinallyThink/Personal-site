@@ -12,44 +12,65 @@ export default {
             specialS: ["。","."],
             htmlText:"",
             specialStr:"",
-            cursor:"<div class=\"cursor\"></div>"
+            cursor:"<div class=\"cursor\"></div>",
+            step : 0
         }
     },
     methods:{
         //添加text文本
-        addText(string,startStep){
-            let step = startStep?startStep:0;
+        addText(string){
             var symbolAdd = this.symbolAdd();
             string.forEach((ele)=>{
-                step += 200;
-                setTimeout(()=>{
                    symbolAdd(ele);
-                },step);
-                if(this.specialS.some((symbol)=>{
-                    return symbol === ele;
-                })){
-                    step +=1000;
-                }
             });
         },
         addhtml(symbol){
             if(this.specialStr){
                 this.specialStr += symbol
             }else{
-            this.htmlText += symbol;
-            document.querySelector("#fakerCMD").innerHTML = this.htmlText + this.cursor;}
+                 this.step += 200;
+                 this.htmlText += symbol;
+                 let str = this.htmlText;
+                setTimeout(()=>{                                    
+                    document.querySelector("#fakerCMD").innerHTML = str + this.cursor;
+                },this.step);
+            if(this.specialS.some((ele)=>{
+                return symbol === ele;
+            })){
+               this.step +=1000;
+            }
+            }
         } ,
        //对特殊字符进行停顿处理
        special(ele){
+           let symbol = "";
            if(ele.IsStr === 1){
                this.specialStr += ele.head;
                return;
            }
            if(ele.IsStr === 2){
-               this.htmlText += this.specialStr + ele.end;
+               symbol += this.specialStr + ele.end;
                this.specialStr = "";
            }
-           this.addhtml(ele.head + ele.end);
+           if(ele.IsStr === 3){
+               this.specialStr += ele.symbol;
+               return;
+           }
+           if(ele.IsStr === 4){
+               let arr =  this.specialStr.split("");
+               let length = arr.length - 1;
+               this.specialStr = "";
+               for(let i = 1 ;i <= length*2;i++){
+                   if(i <= length){
+                       this.addhtml(arr[i]);
+                   }else{
+                       this.htmlText = this.htmlText.substring(0,this.htmlText.split("").length -1);
+                        this.addhtml("")
+                   }
+               }
+               return;
+           }
+           this.addhtml(ele.head+symbol+ele.end);
        },
        //字符处理函数
        symbolAdd(){
@@ -60,7 +81,9 @@ export default {
               ,{symbol:"X",head:"<div class=\"hide\">",end:"</div>",IsStr:0}
               ,{symbol:"&",head:"<br/>",end:"",IsStr:0}
               ,{symbol:"{",head:"<div class=\"hideText\">",end:"",IsStr:1}
-              ,{symbol:"}",head:"",end:"</div>",IsStr:2}]
+              ,{symbol:"}",head:"",end:"</div>",IsStr:2}
+              ,{symbol:"[",head:"",end:"",IsStr:3}
+              ,{symbol:"]",head:"",end:"",IsStr:4}]
            return function(symbol){
                if(!specialSymbol.some((ele)=>{
                    if(ele.symbol === symbol ){
@@ -79,7 +102,6 @@ export default {
             const req = new Axios(href);
             const data = await req.post({});
             if(data.status === 1){
-                console.log(data.data.split("")[0]);
                 callback(data.data.split(""));
             }else{
                 console.warn("faild :",href);
