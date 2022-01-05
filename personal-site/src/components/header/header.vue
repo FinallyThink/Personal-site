@@ -2,26 +2,38 @@
 
 <header :class="inTop">
     <div class="menu">
-   <a  @click="changePage(i)" v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}" >{{item.name}}</li></a>
+    <a  @click="changePage(i)" v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}" >{{item.name}}</li></a>
     <div id="writeSlide"></div>
     </div>
     <div class="option">
-    <li @click="loginUp">登录</li>
+    <!-- <li @click="loginUp">登录</li> -->
     <li id="friends">友链</li>
     <div id="friend-list">
         <a v-for="(item,i) in friends" :key="i" :ref=item.href>{{item.name}}</a>
     </div>
     </div>
+    <div class="mediaSelfName">
+            <img :src="headImg" alt="">
+            <span>勒思师</span>
+    </div>
+    <div class="mediaMenu">
+        <li>菜单</li>
+        <div id="menuList">
+        <a  @click="changePage(i)" v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}">{{item.name}}</li></a>
+        </div>
+    </div>
 </header>
 </template>
 
 <script>
+import  headPicture from "@/assets/image/molisha.jpg"; 
 export default {
     data(){
         return {
             menu:this.$state.menu,
             inTop:"inTop",
             friends:this.$state.friends,
+            headImg: headPicture
 
         }
     },
@@ -45,7 +57,7 @@ export default {
         },
         loginUp(){
             alert("当前IP禁止登录")
-        }
+        },
     }
 }
 </script>
@@ -53,16 +65,80 @@ export default {
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
 
-@media screen and(max-width:550px) {
+@media screen and(max-width:700px) {
       .option,.menu{
-            display: none;
+         display: none;
         }
-   .inTop,header{  
-      background:@header-color;
+     .inTop,header{  
+      background-color :fade(@theme-color,50%);
+      }               
+      .mediaSelfName{
+          margin-left: @left-distance;
+          display: flex;
+          align-items: center;
+          img{
+              height: 2.5rem;
+              border-radius: 1.25rem;
+          }
+          span{
+            font-family:"楷体";
+            font-weight: 500;
+            font-size: 1.5rem;
+            &::before{
+                display: inline-block;
+                content: " ";
+                width: 10px;
+            }
+          }
+          .selected{
+              color: orange;
+              border:none
+          }
       }
+     .mediaMenu{
+             margin-right: @left-distance;
+             >li{
+                 margin-top:.5rem;
+                 background: fade(@theme-color,70%);
+                 height: 2rem;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;
+                 border-radius: .5rem;
+                 box-shadow: .3rem .3rem 0 #999;
+                 &:hover~#menuList{
+                     transform: rotate3d(1, 0, 0, 0deg);
+                 }
+             }
+             #menuList{
+                transition: all .6s;
+                transform-origin:top;
+                box-shadow: @box-shadow;
+                transform: rotate3d(1, 0.2, 0, 90deg);
+                margin-top: 10px;
+                background: fade(@theme-color,70%);
+                border-radius: 7px;
+                &:hover{
+                  transform: rotate3d(1, 0, 0, 0deg);
+
+                }
+             }
+            #menuList a li{
+                 display: block;
+            }
+            #menuList a li.selected{
+                border:none;
+                color:  yellow;
+                cursor:auto;
+                pointer-events: none;
+            }
+      }
+          
+      
+
 }
+
 .inTop{
-    background:transparent;
     border: none;
 }
 // 滑块滑动特效 
@@ -74,7 +150,7 @@ export default {
           }
 
 header{  
-    background:@header-color;
+    background-color :fade(@theme-color,50%);
     position:fixed;
     width: 100%;
     height: 3rem;
@@ -84,10 +160,11 @@ header{
     transition: background 2s;
     display: flex;
     justify-content: space-between;
+    border-radius: 0 0 0.7rem 0.7rem;
     .menu{
          @len : 6;
          @right:left;
-          margin-left: @left-distance;
+         margin-left: @left-distance;
          #writeSlide{
              width: 65px;
              height: 100%;
@@ -99,7 +176,6 @@ header{
              border-bottom: 2px orange solid;
              transition: all .3s;
          }
-     
          .forDo(0,left);
     }
 
@@ -113,7 +189,7 @@ header{
     }
 
     li{
-        z-index: 9979;
+      z-index: 9979;
       position: relative;
       width: 65px;
       color: @font-color_f;
@@ -125,9 +201,7 @@ header{
        border-bottom: 2px orange solid;
       }
       &:hover{
-     
             text-shadow:5px 5px 4px #444;
-        
       }
       }
       #friends:hover~#friend-list{
@@ -142,6 +216,7 @@ header{
           display: flex;
           flex-direction: column;
           .container-b;
+          border-radius:unset;
     
           a{
               width: 100%;
@@ -154,6 +229,13 @@ header{
               }
           }
       }
+}
+@media screen and (min-width:700px){
+    .mediaSelfName,.mediaMenu{
+        display: none;
+    }
+
 } 
+
 
 </style>

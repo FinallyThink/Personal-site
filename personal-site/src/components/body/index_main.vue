@@ -35,6 +35,7 @@
 import  headPicture from "@/assets/image/molisha.jpg"; 
 import  FakerCMD from "@/components/public/components/fakerCMD.vue";
 import  UpList from "./beforUP.vue";
+// import  Ajax
 
 export default {
     components:{
@@ -52,12 +53,41 @@ export default {
                 introduction:"这里写的是姐姐的撒发达发达是开发了的撒发射点飞机喀什大幅答复的沙发上范德萨发生的"
             }
         }
+    },
+    methods:{
+        getBeforUp(){
+
+        }
     }
 }
 </script>
 
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
+
+@media screen and(max-width:700px) {
+    #leftMenu{
+        display: none;
+    }
+    #main-body{
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+}
+@media screen and(min-width:700px) {
+    #leftMenu{
+             display: inline-block;
+    }
+    #main-body{
+        left: calc(150px + 2vw);
+        width: calc(100% - 150px - 2vw);
+        position: absolute;
+        top:0;
+    }
+
+}
 #main{
     z-index: 10;
     position: relative;
@@ -66,7 +96,6 @@ export default {
     font-size:0;
     user-select: none;
     #leftMenu{
-        display: inline-block;
         left:0;
         width: 150px;
         height: 200px;
@@ -98,10 +127,7 @@ export default {
         }
     }
      #main-body{
-            position: absolute;
-            top:0;
-            width: calc(100% - 150px - 2vw);
-            left: calc(150px + 2vw);
+
             .container-b;
             font-size: 1rem;
             h2{
@@ -111,7 +137,9 @@ export default {
             .recommend,.beforUP,.selfBox{
                 width:90%;
                 margin: 10px 5%;
- 
+            }
+            .selfBox{
+                margin: 0 auto;
             }
      }
 }

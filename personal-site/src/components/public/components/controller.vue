@@ -43,13 +43,25 @@ buttonClick:function(data,callback){
 
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
+@media screen and(max-width:700) {
+    #auther{
+      width:100px;
+      height: 100px;
+      font-size:1rem;
+    }    
+}
+@media screen and(min-width:700) {
+    #auther{
+    width:@auther-size;
+    height: @auther-size;
+    font-size:1.8rem;
+    }    
+}
 
 #auther{
     user-select: none;
-    font-size:1.8rem;
+
     font-weight: 800;
-    width:@auther-size;
-    height: @auther-size;
     font-family:"楷体";
     transition: all .75s;
     z-index: 999;
