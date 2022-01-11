@@ -3,13 +3,17 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "serve": "vue-cli-service serve",
+        "start": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
+        "axios": "^0.24.0",
         "core-js": "^3.6.5",
-        "vue": "^2.6.11"
+        "js-md5": "^0.7.3",
+        "vue": "^2.6.11",
+        "vue-router": "^3.5.3",
+        "vuex": "^3.6.2"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",
@@ -41,5 +45,4 @@
         "last 2 versions",
         "not dead"
     ]
-
 }

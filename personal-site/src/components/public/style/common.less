@@ -1,18 +1,84 @@
 @max-width:100%;
 @max-height:100%;
 @min-width: 1080px;
-@left-distance:5vw;
+@left-distance:60px;
 @container-width:90vw;
+
+@auther-size:200px;
+@background-color: rgb(212, 176, 109);
 
 @font-color_f:#fff;
 @header-color:rgb(136, 210, 245);
 @gray:#999;
-
+@c333:#333;
 
 @theme-color:@header-color;
 @text-shadow: 4px 4px 2px @gray;
 @box-shadow:10px 10px 10px @gray;
 .container-b {
-    background-color :fade(@theme-color,80%);
+    background-color :fade(@theme-color,50%);
     box-shadow: @box-shadow;
+    border-radius: 1.5rem;
+    border:1px solid #aaa
+
+}
+
+//absolute 垂直居中
+.box-center-y(@position :absolute){
+    position: @position;
+    top:50%;
+    transform: translate(0,-50%);
+}
+
+//右半圆
+
+.right-semicircle{
+    border-radius: 0 100vw 100vw 0;
+}
+
+//左半圆
+
+.left-semicircle{
+    border-radius: 100vw 0 0  100vw;
+}
+
+//下凹
+.box-shadow-down{
+    box-shadow: 1px 1px 1px inset @c333;
+}
+
+//突起
+.box-shadow-up{
+    box-shadow: .7em 0 .4em  #555;
+}
+
+//滚动条样式
+.scroll-style{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar{
+        width: 0.5rem;
+    }
+    &::-webkit-scrollbar-thumb{
+       background-color:  fade(@theme-color,100%);
+       border-radius: 0.5rem;
+    }
+}
+body{
+    background-color:#999;
+    &::-webkit-scrollbar{
+        width: .4rem;
+        opacity: 0;
+        }
+    &::-webkit-scrollbar-thumb{
+       background-color:  fade(@theme-color,80%);
+       border-radius: 0.5rem;
+    }
+}
+
+.show{
+    opacity: 1;
+}
+.hidden{
+    opacity: 0;
 }

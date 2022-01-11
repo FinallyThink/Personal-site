@@ -1,6 +1,5 @@
 <template>
  <div class="container">
-     <Background/>
      <slot name="header">
 
      </slot>
@@ -10,40 +9,29 @@
 
     </slot>
   </main>
-  <footer>
-    <slot name="footer">
-
-    </slot>
-  </footer>
  </div>
 </template>
 
 <script>
-import Background from "../public/components/image/background.vue"
+
 export default {
- components: {
-      Background
-  }
+
 }
 </script>
 
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
-.container{
-  width: @max-width;
-  height: @max-height;
-  main{
-    width: @max-width;
-  
-    position: relative;
-  }
-  footer{
-    width: @max-width;
-    height: 5vh;
-    position: relative;
-    line-height: 5vh;
 
+.container{
+  main{
+    min-height: calc(70vh - 3rem);
+    max-width: 1920px;
+    width:calc(100% - @left-distance * 2 );
+    margin:0 auto;
+    padding: 15vh 0;
+    position: relative;
   }
+
 }
 
 </style>

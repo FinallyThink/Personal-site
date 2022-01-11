@@ -1,15 +1,16 @@
 <template>
 <div class="background">
-  <video :src="image" autoplay="autoplay" loop="loop" muted="muted"></video>
+  <img v-show="$store.state.BGEffect" :src="image"/>
 </div>
 </template>
 
 <script>
+import img from "@/assets/image/backGround.webp";
 export default {
-data(){
 
+data(){
   return{  
-      image: this.$state.background
+    image:img
 }}
 }
 </script>
@@ -17,13 +18,15 @@ data(){
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
 .background{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     position: fixed;
-    z-index: 0;
+    background-color: @background-color;
+    z-index: -1;
+    top: 0;
 }
-video{
+img{
 width: 100%;height: 100%;object-fit: cover;position: absolute;top: 0;left: 0;
 }
 </style>
