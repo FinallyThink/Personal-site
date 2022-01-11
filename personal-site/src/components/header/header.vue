@@ -2,11 +2,11 @@
 
 <header :class="inTop">
     <div class="menu">
-    <a  @click="changePage(i)" v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}" >{{item.name}}</li></a>
+    <a  @click="clickMenu(i)" v-for="(item, i ) in menu" :key="i" href="javascript:"><router-link :to="item.href"> <li :class="{selected:item.selected}" >{{item.name}}</li></router-link></a>
     <div id="writeSlide"></div>
     </div>
     <div class="option">
-    <!-- <li @click="loginUp">登录</li> -->
+    <li @click="loginUp">登录</li>
     <li id="friends">友链</li>
     <div id="friend-list">
         <a v-for="(item,i) in friends" :key="i" :ref=item.href>{{item.name}}</a>
@@ -19,18 +19,18 @@
     <div class="mediaMenu">
         <li>菜单</li>
         <div id="menuList">
-        <a  @click="changePage(i)" v-for="(item, i ) in menu" :key="i" :ref=item.href> <li :class="{selected:item.selected}">{{item.name}}</li></a>
+        <a  @click="clickMenu(i)" v-for="(item, i ) in menu" :key="i"> <router-link :to="item.href"> <li :class="{selected:item.selected}" >{{item.name}}</li></router-link></a>
         </div>
     </div>
 </header>
 </template>
 
 <script>
-import  headPicture from "@/assets/image/molisha.jpg"; 
+import  headPicture from "@/assets/image/molisha.jpg";
 export default {
     data(){
         return {
-            menu:this.$state.menu,
+            menu:this.$store.state.headMenu,
             inTop:"inTop",
             friends:this.$state.friends,
             headImg: headPicture
@@ -52,8 +52,9 @@ export default {
            }
            return;
         },
-        changePage(key){
-            console.log(key)
+        clickMenu(key){
+            this.$store.commit('menuSelectedChange',key);
+            document.getElementById("writeSlide").className = "Slide" + ++key;
         },
         loginUp(){
             alert("当前IP禁止登录")
@@ -143,8 +144,11 @@ export default {
 }
 // 滑块滑动特效 
 .forDo(@index,@position) when(@index<@len){
-              a:nth-child(@{index}):hover~#writeSlide{
-                  @{position}: calc(@left-distance + (@index - 1) * 65px);
+            a:nth-child(@{index}):hover~#writeSlide{
+                  @{position}: calc(@left-distance + (@index - 1) * 65px) !important;
+           }
+           .Slide@{index}{
+                @{position}: calc(@left-distance + (@index - 1) * 65px) !important;
            }
            .forDo(@index + 1,left);
           }
@@ -161,6 +165,7 @@ header{
     display: flex;
     justify-content: space-between;
     border-radius: 0 0 0.7rem 0.7rem;
+    top:0;
     .menu{
          @len : 6;
          @right:left;

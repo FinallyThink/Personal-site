@@ -1,10 +1,13 @@
 <template>
- <div id="fakerCMD"> 
+ <div id="fakerCMD">
+     <div class="cursor"></div>
  </div>
 </template>
 
 <script>
-import Axios from '@/api/index.js';
+import {selfIntroductionApi} from '@/api/api.js';
+var stop = false;
+
 
 export default {
     data(){
@@ -13,7 +16,7 @@ export default {
             htmlText:"",
             specialStr:"",
             cursor:"<div class=\"cursor\"></div>",
-            step : 0
+            step : 0,
         }
     },
     methods:{
@@ -31,8 +34,10 @@ export default {
                  this.step += 200;
                  this.htmlText += symbol;
                  let str = this.htmlText;
-                setTimeout(()=>{                                    
-                    document.querySelector("#fakerCMD").innerHTML = str + this.cursor;
+                setTimeout(()=>{
+                    if(document.querySelector("#fakerCMD")){                                    
+                     document.querySelector("#fakerCMD").innerHTML = str + this.cursor;
+                    }
                 },this.step);
             if(this.specialS.some((ele)=>{
                 return symbol === ele;
@@ -65,7 +70,7 @@ export default {
                        this.addhtml(arr[i]);
                    }else{
                        this.htmlText = this.htmlText.substring(0,this.htmlText.split("").length -1);
-                        this.addhtml("")
+                       this.addhtml("")
                    }
                }
                return;
@@ -75,8 +80,8 @@ export default {
        //字符处理函数
        symbolAdd(){
            //字符栈
-           var _this = this;
-           var specialSymbol = [
+           var _this = this,
+               specialSymbol = [
                {symbol:" ",head:"&nbsp",end:"",IsStr:0}
               ,{symbol:"X",head:"<div class=\"hide\">",end:"</div>",IsStr:0}
               ,{symbol:"&",head:"<br/>",end:"",IsStr:0}
@@ -93,26 +98,21 @@ export default {
                })){
                    _this.addhtml(symbol);
                }
-
-
            }
        },
-       async getText(callback){
-            const href = './post/selfIntroduction';
-            const req = new Axios(href);
-            const data = await req.post({});
-            if(data.status === 1){
-                callback(data.data.split(""));
-            }else{
-                console.warn("faild :",href);
-            }
-        }
+
     },
     mounted(){
-        this.getText((data)=>{
-            this.addText(data);
-        });
-    },
+        if(stop) return;
+         stop = true;
+        selfIntroductionApi().then((res)=>{
+           if(res.status === 200 &&  res.data.status === 1){
+               this.addText( res.data.data.split(""));
+           }else{
+               console.log("加载selfIntroduction失败");
+           }
+      });
+    }
 }
 </script>
 

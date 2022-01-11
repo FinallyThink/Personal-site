@@ -5,11 +5,12 @@
 </template>
 
 <script>
+import img from "@/assets/image/backGround.webp";
 export default {
-data(){
 
+data(){
   return{  
-      image: this.$state.background,
+    image:img
 }}
 }
 </script>
@@ -22,7 +23,7 @@ data(){
     overflow: hidden;
     position: fixed;
     background-color: @background-color;
-    z-index: 0;
+    z-index: -1;
     top: 0;
 }
 img{

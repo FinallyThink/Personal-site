@@ -12,7 +12,7 @@
 <script>
 import Header from './header/header.vue';
 import Index from './index/index.vue';
-import Main from './body/main-body.vue';
+import Main from './body/Article-main.vue';
 export default {
  components: {
     Index,

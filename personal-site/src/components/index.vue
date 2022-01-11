@@ -19,7 +19,6 @@ export default {
     Index,
     Header,
     Main,
-
   }
 }
 </script>

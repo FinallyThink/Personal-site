@@ -10,17 +10,15 @@ module.exports = {
     },
     devServer: {
         proxy:{
-        //   'article/':{
-            'post/':{
-              target: 'http://localhost:3000/',
-               changeOrigin: false,     // target是域名的话，需要这个参数，}
+        'post/':{
+              target: 'https://eastgm.com/',
+              changeOrigin: true,    
         },
         'img/':{
-            target: 'http://localhost:3000/',
-             changeOrigin: false,     // target是域名的话，需要这个参数，}
-      }
+            target: 'https://eastgm.com/',
+            changeOrigin: true,    
+        },
     },
-        
         open: true,
         host: 'localhost',
         port: 8080,

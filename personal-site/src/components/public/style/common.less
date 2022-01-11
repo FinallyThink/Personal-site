@@ -1,7 +1,7 @@
 @max-width:100%;
 @max-height:100%;
 @min-width: 1080px;
-@left-distance:5vw;
+@left-distance:60px;
 @container-width:90vw;
 
 @auther-size:200px;
@@ -19,11 +19,11 @@
     background-color :fade(@theme-color,50%);
     box-shadow: @box-shadow;
     border-radius: 1.5rem;
+    border:1px solid #aaa
 
 }
 
 //absolute 垂直居中
-
 .box-center-y(@position :absolute){
     position: @position;
     top:50%;
@@ -65,9 +65,9 @@
     }
 }
 body{
-    background-color: #333;
+    background-color:#999;
     &::-webkit-scrollbar{
-        width: 1rem;
+        width: .4rem;
         opacity: 0;
         }
     &::-webkit-scrollbar-thumb{

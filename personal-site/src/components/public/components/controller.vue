@@ -43,24 +43,16 @@ buttonClick:function(data,callback){
 
 <style scoped lang="less">
 @import "~@/components/public/style/common.less";
-@media screen and(max-width:700) {
+@media screen and(max-width:700px){
     #auther{
-      width:100px;
-      height: 100px;
-      font-size:1rem;
+        display: none;
     }    
 }
-@media screen and(min-width:700) {
-    #auther{
+#auther{
     width:@auther-size;
     height: @auther-size;
-    font-size:1.8rem;
-    }    
-}
-
-#auther{
+    font-size:1.6rem;
     user-select: none;
-
     font-weight: 800;
     font-family:"楷体";
     transition: all .75s;
@@ -107,6 +99,9 @@ buttonClick:function(data,callback){
        transform:  rotate(0.5turn);
     }
 }
+
+
+
 
 
 </style>
