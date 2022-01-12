@@ -15,3 +15,6 @@ export const indexRequest = ()=>{
   const article = request.post('./post/getArticleList');
   return article;
 }
+export const getArticle = (file)=>{
+   return request.post('./Article/' + file);
+}

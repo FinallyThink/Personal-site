@@ -41,11 +41,18 @@ export default {
 @import "~@/components/public/style/common.less";
 @media screen and(max-width:600px) {
     #upBlock{
-    .left,.right{
+   .left,.right{
         display: block;
         margin: 0 auto;
         width:100%
     }
+    .left{
+        max-width:200px;
+        height: 100px;
+     }
+     .right{
+         padding-left: 0;
+     }
     }
 
 }
@@ -57,6 +64,10 @@ export default {
     }
     .right{
       width:calc(100% - 210px);
+      padding-left: 30px;
+    }
+    .left{
+     height: 180px;
     }
     }
     
@@ -85,12 +96,14 @@ export default {
        }
     
        .left{
-            height: 180px;
+            
             overflow: hidden;
             img{
+                display: block;
+                margin: 0 auto;
                transition: all .6s;
                width: auto;
-               height: 80%;
+               height: 100%;
                &:hover{
                 transform: scale(1.1)
                }
@@ -100,8 +113,6 @@ export default {
             display: inline-block;
             position: relative;
             vertical-align:top;
-            min-width: 200px;
-            padding-left: 30px;
             text-shadow: 1px 1px #bbb;
             li:not(:nth-child(1)){
                 display: inline-block;
@@ -116,7 +127,7 @@ export default {
                 overflow:hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
-                -webkit-line-clamp: 2;
+                -webkit-line-clamp: 5;
                 -webkit-box-orient: vertical;
                 &::before{
                     content: "";
