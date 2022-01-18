@@ -66,11 +66,10 @@ export default {
 }
 
 #main{
-    z-index: 10;
+    z-index: 1000;
     position: relative;
     margin: 0 auto;
     font-size:0;
-    user-select: none;
 
     #leftMenu{
         position: absolute;

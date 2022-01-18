@@ -38,7 +38,7 @@ export default {
     background: @theme-color;
     bottom: 10vh;
     right: 5vw;
-    z-index: 999;
+    z-index: 99999;
     transition: all 0.5s;
     line-height: 40px;
     border-radius:20px;

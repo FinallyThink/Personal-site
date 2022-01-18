@@ -105,8 +105,8 @@ export default {
         if(stop) return;
          stop = true;
         selfIntroductionApi().then((res)=>{
-           if(res.status === 200 &&  res.data.status === 1){
-               this.addText( res.data.data.split(""));
+           if(res.status === 200){
+               this.addText( res.data.split(""));
            }else{
                console.log("加载selfIntroduction失败");
            }

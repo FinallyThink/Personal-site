@@ -1,7 +1,7 @@
 <template>
 <div class="ArticleList">
      <div id="upBlock" v-for="(item,i) in ArticleList" :key="i">
-        <router-link :to="'/Article?name=' + item.href">
+        <router-link :to="item.href">
          <div class="left">
              <img :src="item.img" :title="item.name">
          </div>

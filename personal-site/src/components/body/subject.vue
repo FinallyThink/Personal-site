@@ -1,6 +1,5 @@
 <template>
   <div id="subject">
-    文章主体
   </div>
 </template>
 
@@ -10,12 +9,12 @@ import MD from '@/commonJS/MarkDown.js';
 export default {
   data(){
     return{
-       rootDom:{}
+       rootDom:null
     }
   },
   methods:{
     addArticle(string){
-      this.rootDom.innerText = string;
+      this.rootDom.innerHTML = string;
     },
   },
   mounted(){
@@ -25,19 +24,47 @@ export default {
       if(rsp.data){
          const md = new MD(rsp.data);
          this.addArticle(md.toHTML());
-
+         this.$store.commit('subsidiarySet',md.getTitle());
       }
     })
   }
 }
 </script>
 
-<style scoped lang="less">
-
+<style  lang="less">
+@import "~@/components/public/style/common.less";
 #subject{
   @subpadding:10px;
-  width:calc(100% - @subpadding * 2);
+  width:calc(90% - @subpadding * 2);
+  margin:@subpadding auto;
   padding: @subpadding;
+  box-shadow: 2px 2px 2px #333,-2px -2px 2px #aaa ;
+  border-radius: 5px;
+  background: fade(@theme-color,60%);
+  p{
+    margin: .4rem;
+  }
+  code{
+     @padding : .4rem;
+     width:calc(100% - @padding * 2);
+     padding: .4rem;
+     display: block;
+     box-shadow: 2px 2px 2px  #fff,-2px -2px 2px   #000 ;
+     color: #fff;
+     background: #333;
+     border-radius: 5px;
+  }
+  h1:nth-child(1){
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  img{
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+  }
 }
 
 </style>
