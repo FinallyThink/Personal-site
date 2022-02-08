@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-      <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2021136701号-1</a>
+      <a href="javascript:">粤ICP备2021136701号-1</a>
   </div>
 </template>
 
