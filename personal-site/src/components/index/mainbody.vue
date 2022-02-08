@@ -1,12 +1,12 @@
 <template>
 <div id="main">
-    <div  id="leftMenu">
+    <div  id="leftMenu" >
        <slot name="leftMenu"></slot>
     </div>
     <div id="main-body">
        <slot name="main-body"></slot>
     </div>
-    <div id="rightContent">
+    <div id="rightContent" :v-if="right">
        <slot name="rightContent"></slot>
     </div>
 </div>
@@ -14,7 +14,22 @@
 
 <script>
 export default {
+    data(){
+        return{
 
+        }
+    },
+    props:{
+        right:{
+            type:Boolean,
+            default:true
+        }
+    },
+    mounted(){
+        if(!this.right){
+           document.getElementById("main-body").style.width = "calc(100% - 150px - 5vw)";
+        }
+    }    
 }
 </script>
 
