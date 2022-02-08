@@ -23,8 +23,8 @@ module.exports = {
             changeOrigin: true, 
         },
         'publicApi':{
-            target:'http://localhost:3000',
-            changeOrigin:false
+            target:'https://eastgm.com/',
+            changeOrigin:true
         }
     },
         open: true,

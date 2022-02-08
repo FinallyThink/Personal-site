@@ -20,8 +20,8 @@
 import  SelfSaid from '../public/components/message/selfSaid.vue'
 import  MainBody from '../index/mainbody.vue';
 import  Recommend from '../public/components/message/recommend.vue';
-import  Subject  from './subject.vue';
-import  Subsidiary from './subsidiary.vue';
+import  Subject  from './subList/subject.vue';
+import  Subsidiary from './subList/subsidiary.vue';
 import  {getArticleRecommend} from '@/api/api.js';
 
 export default{
