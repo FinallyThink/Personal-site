@@ -18,6 +18,14 @@ module.exports = {
             target: 'https://eastgm.com/',
             changeOrigin: true,    
         },
+        'Article/':{
+            target: 'https://eastgm.com/',
+            changeOrigin: true, 
+        },
+        'publicApi':{
+            target:'https://eastgm.com/',
+            changeOrigin:true
+        }
     },
         open: true,
         host: 'localhost',

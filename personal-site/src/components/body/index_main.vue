@@ -5,10 +5,7 @@
         <!-- 自我介绍栏？ -->
         <SelfSaid/>
         <!-- 导航栏 -->
-        <div id="navigation">
-               <h4>入站推荐</h4><br/>
-               <li>推荐个毛 啊自己看</li>
-        </div>
+        <Recommend  :title="recTitle"/>
     </template>
     <!-- 主体部分 -->
     <template #main-body>
@@ -36,7 +33,9 @@ import  UpList from "./beforUP.vue";
 import  CatachPrase from "../public/components/image/textContent.vue";
 import  Bulletin from '../public/components/message/bulletin.vue';
 import  MainBody from '../index/mainbody.vue';
-import  SelfSaid from '../public/components/message/selfSaid.vue'
+import  SelfSaid from '../public/components/message/selfSaid.vue';
+import  Recommend from '../public/components/message/recommend.vue';
+import  {getIndexRecommend} from '@/api/api.js';
 
 export default {
     components:{
@@ -45,18 +44,30 @@ export default {
         CatachPrase,
         Bulletin,
         MainBody,
-        SelfSaid
+        SelfSaid,
+        Recommend
     },
     data(){
+
         return{
             textArr:[
                 {Head:"你必须非常努力",End:"才能显的毫不费力"},
-                {Head:"大学者,非谓有大楼之谓也,",End:"有大师之谓也"},
-                {Head:"志当存高远",End:""},
-                {Head:"天行健",End:"君子以自强不息"}
-                ]
+                {Head:"大学者,非谓有大楼之谓,",End:"有大师之谓也"},
+                {Head:"有时候好想睡一觉",End:"然后一睡不起"},
+                {Head:"我觉得自己罪孽深重",End:"但又不记得犯了什么错"}
+                ],
+            recTitle:"入站推荐",
+
         }
     },
+    mounted(){
+        getIndexRecommend().then((res)=>{
+            if(res.status === 200){
+             this.$children[0].$children[1].setmessage(res.data);
+            }
+           
+        })       
+    }
 }
 </script>
 

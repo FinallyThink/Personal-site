@@ -62,10 +62,10 @@ buttonClick:function(data,callback){
     left:  -@auther-size / 2;
     transform-origin: center;
     transform: rotate(0turn);
-    z-index: 9999;
+    z-index: 999;
      &:hover{
        transform: rotate(0.5turn);
-       z-index: 999;
+       z-index: 1099;
      }
     .hidden-path, .show-path{
          position: absolute;
@@ -88,6 +88,7 @@ buttonClick:function(data,callback){
       background: yellow;
       .right-semicircle;
       text-align: center;
+
       li:nth-child(1){
           position: relative;
           top: 30%;

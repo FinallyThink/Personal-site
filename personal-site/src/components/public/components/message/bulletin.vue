@@ -1,9 +1,11 @@
+
 <template>
+<!-- 公告栏 -->
   <div id="buletin">
     <div class="Whiteboard">
         <h4>公告:</h4>
         <p>本站尚处于公开测试阶段,以后会持续更新DA⭐ZE</p>
-        <li>2022/XX/XX</li>
+        <li>2022/01/01</li>
     </div>
   </div>
 </template>

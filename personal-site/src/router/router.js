@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import text from "../components/text.vue";
 import index from "../components/index.vue";
 import Article from "../components/Article.vue";
+import MyTool from "../components/myTool.vue";
 
 
 // 要告诉 vue 使用 vueRouter
@@ -24,7 +25,12 @@ const routes = [
         path:"/Article",
         name:"Article",
         component: Article
-    }
+    },
+    {
+        path:"/MyTool",
+        name:"MyTool",
+        component: MyTool
+    },
 ]
 
 var route =  new VueRouter({
